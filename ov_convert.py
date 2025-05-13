@@ -6,10 +6,6 @@ import openvino as ov
 
 from onnx.modnet_onnx import MODNet
 
-# MODNET_MODEL_PATH = {
-#     "webcam": "./ov_models/modnet_webcam_portrait_matting.xml",
-#     "photographic": "./ov_models/modnet_photographic_portrait_matting.xml"
-# }
 MODNET_MODEL_PATH = {
     "webcam": "./ov_models/modnet_webcam_portrait_matting_{}_{}.xml",
     "photographic": "./ov_models/modnet_photographic_portrait_matting_{}_{}.xml"
@@ -51,10 +47,6 @@ def main():
     HEIGHT = args.input_height
     WIDTH = args.input_width
 
-    # ov_model_path = (
-    #     MODNET_MODEL_PATH[model_type].split(".xml")[0] + "_" +
-    #     str(WIDTH) + "_" + str(HEIGHT) + ".xml"
-    # )
     ov_model_path = MODNET_MODEL_PATH[model_type].format(WIDTH, HEIGHT)
     
     modnet = create_modnet(MODNET_WEIGHT_PATH[model_type])
